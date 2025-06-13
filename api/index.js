@@ -9,7 +9,17 @@ dotenv.config({
   path: "./.env",
 });
 
-connectDB();
+const app = express();
+
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`app is listening on port ${process.env.PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log("Mongoose Not Connected !!", error);
+  });
 
 // this is a method of making and calling
 // in place
