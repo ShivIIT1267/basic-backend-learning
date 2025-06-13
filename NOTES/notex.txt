@@ -123,3 +123,29 @@ Purpose: Reusable logic that doesn't belong in models/controllers.
 Example: generateToken, sendEmail, formatDate
 
 
+// await async thing : 
+
+synchronous code : when the code runs and wait for each and every file to complete its tasks,this is called synchronous code
+
+asynchronous code : when code runs and it do runs other things such as api calls and other things in the background and also keep perfoming other tasks in the backside, then it is called as asynchronous manner
+
+
+// while dealing with api's what happens is that it is a time consuming process and hence we use async await, which makes it more efficient.
+
+ Does async/await make code faster?
+ No — async/await itself does not make operations faster.
+
+Instead, it makes your program more efficient by allowing:
+
+Other code to run while waiting for time-consuming tasks.
+
+Avoiding blocking the main thread (especially important in browsers or servers).
+
+// something about .env and environment variables
+
+.env are the environmet variables, which are to be used to store the configuration data
+
+// like port to run,passes,and API keys and secrets
+
+dotenv is an npm package which reads the .env file and loads those variables in the process.env, so can be used in the code as earliest as possible
+
