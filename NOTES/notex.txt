@@ -1,0 +1,125 @@
+// notes about cors
+
+// cors means cross origin
+
+// two application working in differnt ports do have
+cross origin or effectively different origin
+
+any web does not allow front end from another port to take the data from our thing,
+
+so we introduce cors, where we decide which can take and which cannot
+
+
+// concept of proxy : 
+
+we have servers in the front end
+it is not taking responses or requests from the backend serveer knowing it is from diffrent origin
+
+// but in the front end we set up proxy, so 
+according to proxy, req and res is done from backend using proxy and backend thinks it is coming from same origins
+
+// it helps it easier to handle long urls
+
+// we will change the proxy value in the vite.config.js as soon as we change our servers
+
+
+// How are you fetching from the backend to show it into the fronend.
+
+// we use methods such as fetch methods or axios to take the data from backend 
+
+useEffect(() => {
+    axios
+      .get("/api/jokes")  // gets from the required url
+      .then((response) => {
+        setJokes(response.data);  // makes the data accoding to the response data and then can be shown using frontend
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+
+// data modelling in mongodB and use of mongobB
+
+ORM and ODM : Object relational mapping and object document mapping, these are two ways to communicate with the 
+databases 
+depending on how the data is stored, we use ORM or ODM ,
+
+some databases store in the form of tables rows and columns like sql, so we use ORM for them while some of them use, 
+JSON format documnents collection, so we use it accordingly
+
+
+in MongoDb it is stored in the document form and we use ODM language mongoose for interaction with it
+
+why mongoDB : we can use complex data structures, to be stored in nested formats, 
+
+🟩 ODM is better when:
+You want rapid, flexible development.
+
+Data structure is nested or unstructured.
+
+Schema changes often.
+
+🟥 ORM is better when:
+You need strict consistency.
+
+You have complex relationships between data.
+
+Your schema is stable and well-defined.
+
+
+// see example of hospital management the way we created the user model,
+
+what is modelling : 
+
+for any software designing it requires, the modelling of the databases, like all the data that will be stored in it
+the schema of all of this is called data modelling
+
+majorly parts of a backend : 
+
+📁 controllers/
+What: Functions that handle logic for each route.
+
+Purpose: Act as the brain — process input, call models, return responses.
+
+Example: createUser, getAllHospitals
+
+
+databases/
+What: DB connection config and setup.
+
+Purpose: Central place to connect to MongoDB or other databases.
+
+Example: mongoose.connect(...) lives here.
+
+
+middlewares/
+What: Functions that run before reaching controllers.
+
+Purpose: For auth checks, error handling, request logging, etc.
+
+Example: verifyToken, errorHandler
+
+
+models/
+What: Mongoose schemas and models.
+
+Purpose: Define the structure of your MongoDB documents.
+
+Example: User.js, Hospital.js
+
+// ROUTERS
+What: Defines HTTP endpoints and maps them to controllers.
+
+Purpose: Handles URLs and HTTP methods.
+
+Example: router.post("/signup", signupController)
+
+UTILITY FUNCTIONS : 
+What: Utility/helper functions.
+
+Purpose: Reusable logic that doesn't belong in models/controllers.
+
+Example: generateToken, sendEmail, formatDate
+
+
